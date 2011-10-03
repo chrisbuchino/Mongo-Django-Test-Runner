@@ -1,15 +1,15 @@
-Mongo-Django-Test-Runner is an extension of the DjangoTestSuiteRunner that allows for creating and dropping a test mongo database for the purpose of unit testing. It assumes that the database data has been exported via the _mongodump_ command and uses the _mongorestore_ command to import the intial test data. I've found this to be an extremely easy way to load default data similar to how you could use django fixtures for relational databases. Hope you find it useful as well.
+Mongo-Django-Test-Runner is an extension of the DjangoTestSuiteRunner that allows for creating and dropping a test mongo database for the purpose of unit testing. It assumes that the database data has been exported via the "mongodump" command and uses the "mongorestore" command to import the intial test data. I've found this to be an extremely easy way to load default data similar to how you could use django fixtures for relational databases. Hope you find it useful as well.
 
 Dependencies:
-* PyMongo
+- PyMongo
 
 Setup:
-# Create symlink to mongo bin directory in your django project root. This takes care of nasty file path resolving issues.
-# Dump your default data using the command "mongodump --db [db_name]"
-# Set MONGO_DB in your settings.py file to be the name our your test database
-# Set DUMP_DIR in your settings.py file to be the directory where your test data exists. This should be the [db_name] in the previous step since mongo will export the data into a folder with the name of the database.
-# Add mongotestrunner.py to your Django project root.
-# Inform Django of your test runner by adding the following line to settings.py: TEST_RUNNER = 'mongotestrunner.TestRunner'
+- Create symlink to mongo bin directory in your django project root. This takes care of nasty file path resolving issues.
+- Dump your default data using the command "mongodump --db [db_name]"
+- Set MONGO_DB in your settings.py file to be the name our your test database
+- Set DUMP_DIR in your settings.py file to be the directory where your test data exists. This should be the [db_name] in the previous step since mongo will export the data into a folder with the name of the database.
+- Add mongotestrunner.py to your Django project root.
+- Inform Django of your test runner by adding the following line to settings.py: TEST_RUNNER = 'mongotestrunner.TestRunner'
 
 Run:
-# As usual, run "python manage.py test [app]". Django will use your custom test runner and your mongo data should load before any tests run and be dropped when all tests have completed.
+- As usual, run "python manage.py test [app]". Django will use your custom test runner and your mongo data should load before any tests run and be dropped when all tests have completed.
